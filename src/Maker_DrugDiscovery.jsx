@@ -10,7 +10,7 @@ const socket = io("https://digitalmoleculemaker.onrender.com", {
   transports: ["websocket"], // Ensures WebSockets are used
 });
 
-const Maker = ({ socket }) => {
+const Maker = () => {
   //The basic molecule outline
   const purple = "src/assets/purple.png";
   const green = "src/assets/green.png";
