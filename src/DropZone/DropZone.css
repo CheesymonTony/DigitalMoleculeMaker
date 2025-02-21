@@ -1,0 +1,7 @@
+.dropzone {
+    position: relative;
+    width: 210px;
+    height: 210px;
+    background-color: grey;
+    border-radius: 10px;
+}

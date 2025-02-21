@@ -1,0 +1,12 @@
+.draggable-block {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    cursor: move;
+    /* border: 1px solid #000; */
+    /* background-color: #fff; */
+
+    z-index: 100;
+    /* transition: all 2s; */
+}
+
