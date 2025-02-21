@@ -60,26 +60,19 @@ const Maker = ({ socket }) => {
       console.log("Selected Images:", selectedImages);
       socket.emit("imagesSelected", selectedImages);
 
-      // Check if the database window is already open
+      // Ensure the correct full URL is used
+      const databaseURL = window.location.origin + "/database";
+
+      // Open a new window with adjustable size and scrollbars
       if (!databaseWindow || databaseWindow.closed) {
-        // Open the new window with correct size and force it as a separate window
         databaseWindow = window.open(
-          "",
-          "_blank",
-          `width=${screen.availWidth},height=${screen.availHeight},top=0,left=0`
+          databaseURL,
+
+          "width=1200,height=800,top=100,left=100,resizable=yes,scrollbars=yes"
         );
 
         if (databaseWindow) {
-          // Temporarily set blank content to prevent popup blockers
-          databaseWindow.document.write(
-            "<html><head><title>Loading...</title></head><body></body></html>"
-          );
-          databaseWindow.document.close();
-          databaseWindow.location.href = window.location.origin + "/database";
-
-          // Ensure event fires only when the window is ready
           databaseWindow.onload = () => {
-            console.log("Database window loaded, sending data...");
             databaseWindow.postMessage(
               { type: "imagesSelected", data: selectedImages },
               "*"
@@ -87,8 +80,7 @@ const Maker = ({ socket }) => {
           };
         }
       } else {
-        // If it's already open, focus and send the event immediately
-        console.log("Database window already open, sending data...");
+        // If already open, bring to front and send data
         databaseWindow.focus();
         databaseWindow.postMessage(
           { type: "imagesSelected", data: selectedImages },

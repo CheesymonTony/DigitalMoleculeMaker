@@ -28,6 +28,12 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(parseInt('4000', 10), () => {
-  console.log(`WebSocket server is running on http://localhost:${'4000'}`);
+const PORT = process.env.PORT || 4000; // Use Render's provided PORT
+
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`WebSocket server is running on port ${PORT}`);
 });
+
+// server.listen(parseInt('4000', 10), () => {
+//   console.log(`WebSocket server is running on http://localhost:${'4000'}`);
+// });
