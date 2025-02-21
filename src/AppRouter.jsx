@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import PasswordLock from "./PasswordLock";
 import Maker from "./Maker_DrugDiscovery";
 import Database from "./Database_DrugDiscovery";
@@ -7,6 +7,8 @@ import MoleculeDisplayV2 from "./MoleculeDisplay/MoleculeDisplayV2";
 import DragTestPage from "./DragTest/DragTest";
 import DragTestPageV2 from "./DragTest/DragTestV2";
 import App from "./Examples/example";
+import { nav, use } from "framer-motion/client";
+import { useEffect } from "react";
 
 function AppRouter({ socket }) {
   return (
