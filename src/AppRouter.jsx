@@ -11,6 +11,13 @@ import { nav, use } from "framer-motion/client";
 import { useEffect } from "react";
 
 function AppRouter({ socket }) {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Navigate the current window to /maker
+    navigate("/maker");
+  }, [navigate]);
+
   return (
     <Routes>
       <Route path="/" element={<PasswordLock />} />
