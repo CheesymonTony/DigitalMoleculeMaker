@@ -1,9 +1,14 @@
+import { io } from "socket.io-client"; // Import Socket.IO
 import "./App.css";
 import Sidebar from "./Sidebar/Sidebar";
 import MainContent from "./MainContent";
 import { useState } from "react";
 import allMolecules from "./molecule_database_DrugDiscovery";
 import Header from "./Header";
+
+const socket = io("https://digitalmoleculemaker.onrender.com", {
+  transports: ["websocket"], // Ensures WebSockets are used
+});
 
 const Maker = ({ socket }) => {
   //The basic molecule outline
