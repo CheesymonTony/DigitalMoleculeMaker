@@ -1,4 +1,3 @@
-import { io } from "socket.io-client"; // Import Socket.IO
 import "./App.css";
 import Sidebar from "./Sidebar/Sidebar";
 import MainContent from "./MainContent";
@@ -6,37 +5,33 @@ import { useState } from "react";
 import allMolecules from "./molecule_database_DrugDiscovery";
 import Header from "./Header";
 
-const socket = io("https://digitalmoleculemaker.onrender.com", {
-  transports: ["websocket"], // Ensures WebSockets are used
-});
-
-const Maker = () => {
+const Maker = ({ socket }) => {
   //The basic molecule outline
   const purple = "src/assets/purple.png";
   const green = "src/assets/green.png";
   const blue = "src/assets/blue.png";
   const [selectedImages, setSelectedImages] = useState([
-    "DrugDiscovery_Images/C12H10N.png",
-    "DrugDiscovery_Images/C6H3F.png",
-    "DrugDiscovery_Images/C6H4NO2.png",
+    "/DrugDiscovery_Images/C12H10N.png",
+    "/DrugDiscovery_Images/C6H3F.png",
+    "/DrugDiscovery_Images/C6H4NO2.png",
   ]);
   //the list of all molecules available
   const images = [
-    "DrugDiscovery_Images/S1.png",
-    "DrugDiscovery_Images/S2.png",
-    "DrugDiscovery_Images/S4.png",
-    "DrugDiscovery_Images/S3.png",
-    "DrugDiscovery_Images/S5.png",
-    "DrugDiscovery_Images/M3.png",
-    "DrugDiscovery_Images/M5.png",
-    "DrugDiscovery_Images/M4.png",
-    "DrugDiscovery_Images/M2.png",
-    "DrugDiscovery_Images/M1.png",
-    "DrugDiscovery_Images/E4.png",
-    "DrugDiscovery_Images/E5.png",
-    "DrugDiscovery_Images/E3.png",
-    "DrugDiscovery_Images/E2.png",
-    "DrugDiscovery_Images/E1.png",
+    "/DrugDiscovery_Images/S1.png",
+    "/DrugDiscovery_Images/S2.png",
+    "/DrugDiscovery_Images/S4.png",
+    "/DrugDiscovery_Images/S3.png",
+    "/DrugDiscovery_Images/S5.png",
+    "/DrugDiscovery_Images/M3.png",
+    "/DrugDiscovery_Images/M5.png",
+    "/DrugDiscovery_Images/M4.png",
+    "/DrugDiscovery_Images/M2.png",
+    "/DrugDiscovery_Images/M1.png",
+    "/DrugDiscovery_Images/E4.png",
+    "/DrugDiscovery_Images/E5.png",
+    "/DrugDiscovery_Images/E3.png",
+    "/DrugDiscovery_Images/E2.png",
+    "/DrugDiscovery_Images/E1.png",
   ];
 
   //Handles adding molecules selected from the sidebar to the currently built molecule.

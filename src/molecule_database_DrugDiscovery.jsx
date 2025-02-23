@@ -1,7 +1,7 @@
 import { source } from "framer-motion/client";
 
 const MoleculeDatabase = {
-  "DrugDiscovery_Images/S1.png": {
+  "/DrugDiscovery_Images/S1.png": {
     source: "AmB",
     name: "C17H27NO9",
     color: "purple",
@@ -11,7 +11,7 @@ const MoleculeDatabase = {
     synthesizability: 6.5,
     rank: 1,
   },
-  "DrugDiscovery_Images/S2.png": {
+  "/DrugDiscovery_Images/S2.png": {
     source: "C2'-deO",
     name: "C17H27NO8",
     color: "purple",
@@ -21,7 +21,7 @@ const MoleculeDatabase = {
     synthesizability: 4.2,
     rank: 2,
   },
-  "DrugDiscovery_Images/S4.png": {
+  "/DrugDiscovery_Images/S4.png": {
     source: "AM-1-243",
     name: "C20H34N2O10",
     color: "purple",
@@ -31,7 +31,7 @@ const MoleculeDatabase = {
     synthesizability: 6.8,
     rank: 3,
   },
-  "DrugDiscovery_Images/S3.png": {
+  "/DrugDiscovery_Images/S3.png": {
     source: "C2'-epi",
     name: "C17H27NO9_2",
     color: "purple",
@@ -41,7 +41,7 @@ const MoleculeDatabase = {
     synthesizability: 6.1,
     rank: 4,
   },
-  "DrugDiscovery_Images/S5.png": {
+  "/DrugDiscovery_Images/S5.png": {
     source: "AM-2-19",
     name: "C20H34N2O10_2",
     color: "purple",
@@ -51,7 +51,7 @@ const MoleculeDatabase = {
     synthesizability: 5.8,
     rank: 5,
   },
-  "DrugDiscovery_Images/M3.png": {
+  "/DrugDiscovery_Images/M3.png": {
     source: "Natamycin",
     name: "C4H4",
     color: "green",
@@ -61,7 +61,7 @@ const MoleculeDatabase = {
     synthesizability: 2.4,
     rank: 1,
   },
-  "DrugDiscovery_Images/M5.png": {
+  "/DrugDiscovery_Images/M5.png": {
     source: "Lucensomysin",
     name: "C6H6",
     color: "green",
@@ -71,7 +71,7 @@ const MoleculeDatabase = {
     synthesizability: 8.3,
     rank: 2,
   },
-  "DrugDiscovery_Images/M4.png": {
+  "/DrugDiscovery_Images/M4.png": {
     source: "Candicidin",
     name: "C10H10_2",
     color: "green",
@@ -81,7 +81,7 @@ const MoleculeDatabase = {
     synthesizability: 6.2,
     rank: 3,
   },
-  "DrugDiscovery_Images/M2.png": {
+  "/DrugDiscovery_Images/M2.png": {
     source: "Nystatin",
     name: "C10H12",
     color: "green",
@@ -91,7 +91,7 @@ const MoleculeDatabase = {
     synthesizability: 9.1,
     rank: 4,
   },
-  "DrugDiscovery_Images/M1.png": {
+  "/DrugDiscovery_Images/M1.png": {
     source: "AmB",
     name: "C10H10",
     color: "green",
@@ -101,7 +101,7 @@ const MoleculeDatabase = {
     synthesizability: 7.5,
     rank: 5,
   },
-  "DrugDiscovery_Images/E4.png": {
+  "/DrugDiscovery_Images/E4.png": {
     source: "Candicidin",
     name: "C18H25NO3",
     color: "blue",
@@ -111,7 +111,7 @@ const MoleculeDatabase = {
     synthesizability: 3.8,
     rank: 1,
   },
-  "DrugDiscovery_Images/E5.png": {
+  "/DrugDiscovery_Images/E5.png": {
     source: "Vacidin A",
     name: "C19H27NO3",
     color: "blue",
@@ -121,7 +121,7 @@ const MoleculeDatabase = {
     synthesizability: 5.4,
     rank: 2,
   },
-  "DrugDiscovery_Images/E3.png": {
+  "/DrugDiscovery_Images/E3.png": {
     source: "C35-OMe-AmB",
     name: "C10H18O2",
     color: "blue",
@@ -131,7 +131,7 @@ const MoleculeDatabase = {
     synthesizability: 7.4,
     rank: 3,
   },
-  "DrugDiscovery_Images/E2.png": {
+  "/DrugDiscovery_Images/E2.png": {
     source: "C35-deO-AmB",
     name: "C9H16O",
     color: "blue",
@@ -141,7 +141,7 @@ const MoleculeDatabase = {
     synthesizability: 7.9,
     rank: 4,
   },
-  "DrugDiscovery_Images/E1.png": {
+  "/DrugDiscovery_Images/E1.png": {
     source: "AmB",
     name: "C9H16O2",
     color: "blue",
@@ -151,7 +151,7 @@ const MoleculeDatabase = {
     synthesizability: 8.2,
     rank: 5,
   },
-  "C6H4O4.png": {
+  "/C6H4O4.png": {
     name: "c6h4o4",
     color: "purple",
     weight: 1,
@@ -160,7 +160,7 @@ const MoleculeDatabase = {
     synthesizability: 1,
     rank: -1,
   },
-  "C15H14BNO4S.png": {
+  "/C15H14BNO4S.png": {
     name: "c15h14bno4s",
     color: "green",
     weight: 1,
@@ -169,7 +169,7 @@ const MoleculeDatabase = {
     synthesizability: 1,
     rank: -1,
   },
-  "C6H2O2.png": {
+  "/C6H2O2.png": {
     name: "c6h2o2",
     color: "blue",
     weight: 1,
@@ -178,7 +178,7 @@ const MoleculeDatabase = {
     synthesizability: 1,
     rank: -1,
   },
-  "DrugDiscovery_Images/C12H10N.png": {
+  "/DrugDiscovery_Images/C12H10N.png": {
     name: "c12h10n",
     color: "purple",
     weight: 1.3,
@@ -187,7 +187,7 @@ const MoleculeDatabase = {
     synthesizability: 4.5,
     rank: 1,
   },
-  "DrugDiscovery_Images/C6H4NO2.png": {
+  "/DrugDiscovery_Images/C6H4NO2.png": {
     name: "c6h4no2",
     color: "blue",
     weight: 8.4,
@@ -196,7 +196,7 @@ const MoleculeDatabase = {
     synthesizability: 4.5,
     rank: 1,
   },
-  "DrugDiscovery_Images/C6H3F.png": {
+  "/DrugDiscovery_Images/C6H3F.png": {
     name: "c6h3f",
     color: "green",
     weight: 9.6,

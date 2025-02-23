@@ -7,8 +7,6 @@ import { io } from "socket.io-client"; // Import Socket.IO
 // import viteLogo from '/vite.svg'
 import "./App.css";
 
-import io from "socket.io-client";
-
 const socket = io("https://digitalmoleculemaker.onrender.com", {
   transports: ["websocket"], // Ensures WebSockets are used
 });

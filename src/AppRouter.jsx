@@ -1,4 +1,3 @@
-import { io } from "socket.io-client"; // Import Socket.IO
 import { Routes, Route, useNavigate } from "react-router-dom";
 import PasswordLock from "./PasswordLock";
 import Maker from "./Maker_DrugDiscovery";
@@ -11,22 +10,18 @@ import App from "./Examples/example";
 import { nav, use } from "framer-motion/client";
 import { useEffect } from "react";
 
-const socket = io("https://digitalmoleculemaker.onrender.com", {
-  transports: ["websocket"], // Ensures WebSockets are used
-});
+function AppRouter({ socket }) {
+  // const navigate = useNavigate();
 
-function AppRouter() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // Navigate the current window to /maker
-    navigate("/maker");
-  }, [navigate]);
+  // useEffect(() => {
+  //   // Navigate the current window to /maker
+  //   navigate("/maker");
+  // }, [navigate]);
 
   return (
     <Routes>
-      <Route path="/" element={<PasswordLock />} />
-      <Route path="/maker" element={<Maker socket={socket} />} />
+      {/* <Route path="/" element={<PasswordLock />} /> */}
+      <Route path="/" element={<Maker socket={socket} />} />
       <Route path="/database" element={<Database socket={socket} />} />
       <Route path="/molecule" element={<MoleculePage socket={socket} />} />
       <Route path="/dev" element={<DragTestPageV2 socket={socket} />} />

@@ -7,11 +7,7 @@ import Loading from "./Loading";
 import Header from "./Header";
 import Chart from "./Chart_DrugDiscovery";
 
-const socket = io("https://digitalmoleculemaker.onrender.com", {
-  transports: ["websocket"], // Ensures WebSockets are used
-});
-
-const Database = () => {
+const Database = ({ socket }) => {
   console.log("Database component is rendering...");
   console.log("Socket in Database:", socket);
   const [selectedImages, setSelectedImages] = useState([]);
