@@ -10,10 +10,11 @@ const Maker = ({ socket }) => {
   const purple = "src/assets/purple.png";
   const green = "src/assets/green.png";
   const blue = "src/assets/blue.png";
+
   const [selectedImages, setSelectedImages] = useState([
-    "/DrugDiscovery_Images/C12H10N.png",
-    "/DrugDiscovery_Images/C6H3F.png",
-    "/DrugDiscovery_Images/C6H4NO2.png",
+    ["module1", Math.floor(Math.random() * 4)],
+    ["module2", Math.floor(Math.random() * 4)],
+    ["module3", Math.floor(Math.random() * 4)],
   ]);
   //the list of all molecules available
   const images = [
@@ -35,18 +36,32 @@ const Maker = ({ socket }) => {
   ];
 
   //Handles adding molecules selected from the sidebar to the currently built molecule.
-  const handleImageSelect = (index) => {
-    var selectedImage = images[index];
-    const molecule = allMolecules[selectedImage];
-    if (molecule.color == "purple") {
+  const handleImageSelect = (moduleKey, molecule) => {
+    console.log("moduleKey:", moduleKey);
+    console.log("molecule:", molecule);
+    var selectedImage = allMolecules[moduleKey][molecule];
+
+    if (selectedImage.color == "purple") {
       //if the selected molecule is purple, replace the purple molecule
-      setSelectedImages([selectedImage, selectedImages[1], selectedImages[2]]);
-    } else if (molecule.color == "green") {
+      setSelectedImages([
+        [moduleKey, molecule],
+        selectedImages[1],
+        selectedImages[2],
+      ]);
+    } else if (selectedImage.color == "green") {
       //if the selected molecule is green, replace the green molecule
-      setSelectedImages([selectedImages[0], selectedImage, selectedImages[2]]);
-    } else if (molecule.color == "blue") {
+      setSelectedImages([
+        selectedImages[0],
+        [moduleKey, molecule],
+        selectedImages[2],
+      ]);
+    } else if (selectedImage.color == "blue") {
       //if the selected molecule is blue, replace the blue molecule
-      setSelectedImages([selectedImages[0], selectedImages[1], selectedImage]);
+      setSelectedImages([
+        selectedImages[0],
+        selectedImages[1],
+        [moduleKey, molecule],
+      ]);
     }
   };
   let databaseWindow = null;
@@ -76,7 +91,7 @@ const Maker = ({ socket }) => {
         }}
       >
         <Sidebar
-          images={images}
+          imageDatabase={allMolecules}
           handleImageSelect={handleImageSelect}
           selectedImages={selectedImages}
         />

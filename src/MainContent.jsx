@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import MoleculeDisplay from "./MoleculeDisplay_DrugDiscovery";
+import MoleculeDisplay from "./MoleculeDisplay/MoleculeDisplay_DrugDiscovery";
 
 const MainContent = ({ selectedImages }) => {
   return (
@@ -18,27 +18,33 @@ const MainContent = ({ selectedImages }) => {
         marginLeft: "10%",
       }}
     >
+      {/* {selectedImages.map(([module, index]) => (
+        <MoleculeDisplay
+          module={module}
+          image={index}
+          classParent={"selected-block"}
+        ></MoleculeDisplay> */}
       <MoleculeDisplay
-        image={selectedImages[0]}
-        width={"15rem"}
-        height={"10rem"}
+        module={selectedImages[0][0]}
+        image={selectedImages[0][1]}
+        classParent={"selected-block"}
       ></MoleculeDisplay>
       <MoleculeDisplay
-        image={selectedImages[1]}
-        width={"13rem"}
-        height={"10rem"}
+        module={selectedImages[1][0]}
+        image={selectedImages[1][1]}
+        classParent={"selected-block"}
       ></MoleculeDisplay>
       <MoleculeDisplay
-        image={selectedImages[2]}
-        width={"13rem"}
-        height={"10rem"}
+        module={selectedImages[2][0]}
+        image={selectedImages[2][1]}
+        classParent={"selected-block"}
       ></MoleculeDisplay>
     </div>
   );
 };
 
-MainContent.propTypes = {
-  selectedImages: PropTypes.arrayOf(PropTypes.string),
-};
+// MainContent.propTypes = {
+//   selectedImages: PropTypes.arrayOf(PropTypes.string),
+// };
 
 export default MainContent;

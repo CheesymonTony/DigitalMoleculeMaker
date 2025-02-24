@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
-import MoleculeDisplay from "../MoleculeDisplay_DrugDiscovery";
+import MoleculeDisplay from "../MoleculeDisplay/MoleculeDisplay_DrugDiscovery";
 
-const Sidebar = ({ images, handleImageSelect, selectedImages }) => {
+const Sidebar = ({ imageDatabase, handleImageSelect, selectedImages }) => {
   //shows each available molecule to build the trimer
+  console.log("imageDatabase:", imageDatabase);
+  console.log("selectedImages:", selectedImages);
+
   return (
     <div
       className="sidebar"
@@ -25,28 +28,34 @@ const Sidebar = ({ images, handleImageSelect, selectedImages }) => {
         }}
       >
         {/* Maps each image available to a MoleculeDisplay option */}
-        {images.map((image, index) => (
-          // When a sidebar molecule is clicked, the molecule will be added to the built molecule
-          <div
-            key={index}
-            onClick={() => handleImageSelect(index)}
-            style={{ marginTop: ".2rem", width: "45%" }}
-          >
-            <MoleculeDisplay
-              image={image}
-              className={selectedImages.includes(image) ? "selected" : ""}
-            />
-          </div>
-        ))}
+        {Object.keys(imageDatabase).map((moduleKey) =>
+          Object.keys(imageDatabase[moduleKey]).map((molecule, index) => (
+            // When a sidebar molecule is clicked, the molecule will be added to the built molecule
+            <div
+              key={`${moduleKey}-${index}`}
+              onClick={() => handleImageSelect(moduleKey, index)}
+              style={{ marginTop: ".2rem", width: "45%" }}
+            >
+              <MoleculeDisplay
+                module={moduleKey}
+                image={index}
+                classParent={"sidebar"}
+                className={
+                  selectedImages.includes([moduleKey, index]) ? "selected" : ""
+                }
+              />
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
 };
 
-Sidebar.propTypes = {
-  images: PropTypes.array.isRequired,
-  handleImageSelect: PropTypes.func.isRequired,
-  selectedImages: PropTypes.array.isRequired,
-};
+// Sidebar.propTypes = {
+//   images: PropTypes.array.isRequired,
+//   handleImageSelect: PropTypes.func.isRequired,
+//   selectedImages: PropTypes.array.isRequired,
+// };
 
 export default Sidebar;

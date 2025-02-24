@@ -1,20 +1,16 @@
-import { io } from "socket.io-client"; // Import Socket.IO
 import { useEffect, useState } from "react";
 import allMolecules from "./molecule_database_DrugDiscovery";
-import MoleculeDisplay from "./MoleculeDisplay_DrugDiscovery";
+import MoleculeDisplay from "./MoleculeDisplay/MoleculeDisplay_DrugDiscovery";
 import getSuggestedMolecule from "./GetSuggestedMolecule_DrugDiscovery";
 import Loading from "./Loading";
 import Header from "./Header";
 import Chart from "./Chart_DrugDiscovery";
 
 const Database = ({ socket }) => {
-  console.log("Database component is rendering...");
-  console.log("Socket in Database:", socket);
   const [selectedImages, setSelectedImages] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log("Selected Images:", selectedImages);
     socket.on(
       "updateImages",
       (updatedImages) => {
@@ -62,6 +58,7 @@ const Database = ({ socket }) => {
       ``;
 
       const suggested = getSuggestedMolecule(selectedImages);
+      console.log("Suggested:", suggested);
 
       if (suggested === true) {
         return displayWinningPage(selectedImages, data, options);
@@ -95,10 +92,13 @@ const Database = ({ socket }) => {
 
 // Gets the data for the graph for the properties of the molecule
 const getMoleculeProperties = (selectedImages) => {
+  console.log("Selected Images:", selectedImages);
+
   //get molecule information from the molecule list
   const molecules = selectedImages.map((image, i) => {
-    return allMolecules[image];
+    return allMolecules[image[0]][image[1]];
   });
+
   const numMolecules = molecules.length;
   console.log("Molecules:", molecules);
   const weightSum = molecules.reduce((acc, currImage) => {
@@ -158,7 +158,8 @@ const displaySuggestionPage = (selectedImages, suggested, data, options) => {
             {selectedImages.map((image, i) => (
               <MoleculeDisplay
                 key={i}
-                image={image}
+                module={image[0]}
+                image={image[1]}
                 width={200}
                 height={150}
               ></MoleculeDisplay>
@@ -187,7 +188,8 @@ const displaySuggestionPage = (selectedImages, suggested, data, options) => {
                 {suggestedTrimer.map((image, j) => (
                   <MoleculeDisplay
                     key={j}
-                    image={image}
+                    module={image[0]}
+                    image={image[1]}
                     width={"15rem"}
                     height={"12rem"}
                   ></MoleculeDisplay>
@@ -235,7 +237,8 @@ const displayWinningPage = (selectedImages, data, options) => {
             {selectedImages.map((image, i) => (
               <MoleculeDisplay
                 key={i}
-                image={image}
+                module={image[0]}
+                image={image[1]}
                 width={200}
                 height={150}
               ></MoleculeDisplay>
@@ -290,7 +293,8 @@ const displayInvalidPage = (selectedImages, data, options) => {
             {selectedImages.map((image, i) => (
               <MoleculeDisplay
                 key={i}
-                image={image}
+                module={image[0]}
+                image={image[1]}
                 width={200}
                 height={150}
               ></MoleculeDisplay>
