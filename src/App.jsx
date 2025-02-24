@@ -7,9 +7,13 @@ import { io } from "socket.io-client"; // Import Socket.IO
 // import viteLogo from '/vite.svg'
 import "./App.css";
 
-const socket = io("https://digitalmoleculemaker.onrender.com", {
-  transports: ["websocket"], // Ensures WebSockets are used
-});
+//for local hosting
+const socket = io.connect(`http://localhost:${4000}`);
+
+//for deployment
+// const socket = io("https://digitalmoleculemaker.onrender.com", {
+//   transports: ["websocket"], // Ensures WebSockets are used
+// });
 
 function App() {
   return (
