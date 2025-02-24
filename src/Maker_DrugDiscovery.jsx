@@ -57,36 +57,7 @@ const Maker = ({ socket }) => {
       selectedImages[1] !== "src/assets/green.png" &&
       selectedImages[2] !== "src/assets/blue.png"
     ) {
-      console.log("Selected Images:", selectedImages);
       socket.emit("imagesSelected", selectedImages);
-
-      // Ensure the correct full URL is used
-      const databaseURL = window.location.origin + "/database";
-
-      // Open a new window with adjustable size and scrollbars
-      if (!databaseWindow || databaseWindow.closed) {
-        databaseWindow = window.open(
-          databaseURL,
-
-          "width=1200,height=800,top=100,left=100,resizable=yes,scrollbars=yes"
-        );
-
-        if (databaseWindow) {
-          databaseWindow.onload = () => {
-            databaseWindow.postMessage(
-              { type: "imagesSelected", data: selectedImages },
-              "*"
-            );
-          };
-        }
-      } else {
-        // If already open, bring to front and send data
-        databaseWindow.focus();
-        databaseWindow.postMessage(
-          { type: "imagesSelected", data: selectedImages },
-          "*"
-        );
-      }
     } else {
       alert("Invalid molecule submitted!");
     }
