@@ -4,7 +4,7 @@ import MoleculeDatabase from "../molecule_database_DrugDiscovery";
 import "./MoleculeDisplay_DD_style.css";
 
 const MoleculeDisplay = ({ module, image, classParent }) => {
-  //dipslays the molecule image and its name
+  //displays the molecule image and its name
   const moleculeEntry = MoleculeDatabase[module][image];
   const name = moleculeEntry.name;
 

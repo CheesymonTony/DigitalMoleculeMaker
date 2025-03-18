@@ -1,7 +1,8 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import PasswordLock from "./PasswordLock";
-import Maker from "./Maker_DrugDiscovery";
-import Database from "./Database_DrugDiscovery";
+import MakerOld from "./Maker_DrugDiscovery_old";
+import MakerUpdated from "./Maker_DrugDiscovery_Updated";
+import Analysis from "./Analysis/Analysis_DrugDiscovery";
 import MoleculePage from "./SmilePage";
 import MoleculeDisplayV2 from "./MoleculeDisplay/MoleculeDisplayV2";
 import DragTestPage from "./DragTest/DragTest";
@@ -9,6 +10,9 @@ import DragTestPageV2 from "./DragTest/DragTestV2";
 import App from "./Examples/example";
 import { nav, use } from "framer-motion/client";
 import { useEffect } from "react";
+import MoleculeTest from "./MoleculeDisplay/moleculeTest";
+import UpdatePrompt from "./UpdatePrompt/UpdatePrompt";
+import RebootScreen from "./RebootScreen/Reboot";
 
 function AppRouter({ socket }) {
   // const navigate = useNavigate();
@@ -20,12 +24,15 @@ function AppRouter({ socket }) {
 
   return (
     <Routes>
-      {/* <Route path="/" element={<PasswordLock />} /> */}
-      <Route path="/" element={<Maker socket={socket} />} />
-      <Route path="/database" element={<Database socket={socket} />} />
-      <Route path="/molecule" element={<MoleculePage socket={socket} />} />
+      <Route path="/" element={<PasswordLock />} />
+      <Route path="/maker" element={<MakerOld socket={socket} />} />
+      <Route path="/maker_new" element={<MakerUpdated socket={socket} />} />
+      <Route path="/analysis" element={<Analysis socket={socket} />} />
+      <Route path="/molecule" element={<MoleculeTest socket={socket} />} />
       <Route path="/dev" element={<DragTestPageV2 socket={socket} />} />
       <Route path="/dev2" element={<App socket={socket} />} />
+      <Route path="/update" element={<UpdatePrompt socket={socket} />} />
+      <Route path="/reboot" element={<RebootScreen socket={socket} />} />
     </Routes>
   );
 }

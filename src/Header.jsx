@@ -2,6 +2,7 @@ import "./App.css";
 import icons from "./assets/icons.png";
 import mmli from "./assets/mmli.svg";
 import { useEffect, useState } from "react";
+import "typeface-roboto";
 
 const Header = () => {
   return (
@@ -12,7 +13,8 @@ const Header = () => {
         margin: "none",
         width: "100%",
         alignItems: "center",
-        justifyContent: "space-between",
+        justifyContent: "flex-start",
+        gap: "50px",
         height: "7rem",
       }}
     >
@@ -20,17 +22,20 @@ const Header = () => {
         className="mmli-img"
         src={mmli}
         alt="mmli"
-        height={80}
-        style={{ padding: "2rem" }}
+        height={"80px"}
+        style={{ padding: "0px" }}
       />
-      <h1 style={{ display: "flex", alignItems: "center", fontSize: "2em" }}>
-        Digitial Molecule Maker
+      <h1
+        style={{
+          display: "flex",
+          alignItems: "center",
+          fontSize: "3em",
+          fontFamily: "Roboto",
+          fontWeight: " 300",
+        }}
+      >
+        Digital Molecule Maker
       </h1>
-      <img
-        src={icons}
-        alt="Icons"
-        style={{ paddingRight: "3rem", width: "6em", height: "3em" }}
-      />
     </header>
   );
 };

@@ -79,7 +79,7 @@ const MoleculeDatabase = {
     1: {
       source: "Lucensomysin",
       filePath: "/DrugDiscovery_Images/M5.png",
-      name: "C6H6",
+      name: "C6H",
       tag: "M5",
       color: "green",
       weight: 78.11,

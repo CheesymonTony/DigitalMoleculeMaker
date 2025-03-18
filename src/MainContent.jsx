@@ -8,14 +8,14 @@ const MainContent = ({ selectedImages }) => {
       className="main-content"
       style={{
         display: "flex",
-        backgroundColor: "Gainsboro",
-        borderRadius: "10px",
-        marginInline: "5rem",
-        width: "50%",
+        backgroundColor: "white",
+        borderRadius: "25px",
+        width: "70%",
         height: "15rem",
         alignItems: "center",
         justifyContent: "center",
-        marginLeft: "10%",
+        marginLeft: "5%",
+        marginRight: "5%",
       }}
     >
       {/* {selectedImages.map(([module, index]) => (

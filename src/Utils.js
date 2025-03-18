@@ -1,6 +1,37 @@
 import allMolecules from "./molecule_database_DrugDiscovery";
 
-const GetSuggestedMolecule = (selectedMolecules) => {
+export const getMoleculeProperties = (selectedImages) => {
+  console.log("Selected Images:", selectedImages);
+
+  //get molecule information from the molecule list
+  const molecules = selectedImages.map((image, i) => {
+    return allMolecules[image[0]][image[1]];
+  });
+
+  const numMolecules = molecules.length;
+  console.log("Molecules:", molecules);
+  const weightSum = molecules.reduce((acc, currImage) => {
+    return acc + currImage.weight;
+  }, 0);
+  const potencySum = molecules.reduce((acc, currImage) => {
+    return acc + currImage.potency;
+  }, 0);
+  const toxicitySum = molecules.reduce((acc, currImage) => {
+    return acc + currImage.toxicity;
+  }, 0);
+  const synthSum = molecules.reduce((acc, currImage) => {
+    return acc + currImage.synthesizability;
+  }, 0);
+
+  return [
+    weightSum / numMolecules / 100,
+    potencySum / numMolecules,
+    toxicitySum / numMolecules,
+    synthSum / numMolecules,
+  ];
+};
+
+export const getSuggestedMolecule = (selectedMolecules) => {
   // gets the actual molecule information from the molecule list
   console.log("Selected Molecules in suggested:", selectedMolecules);
   const molecule1 =
@@ -70,4 +101,6 @@ const GetSuggestedMolecule = (selectedMolecules) => {
   }
 };
 
-export default GetSuggestedMolecule;
+export const formatChemicalFormula = (formula) => {
+  return formula.replace(/(\d+)/g, "<sub>$1</sub>");
+};

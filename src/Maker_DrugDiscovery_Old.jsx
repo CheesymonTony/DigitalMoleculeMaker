@@ -4,12 +4,23 @@ import MainContent from "./MainContent";
 import { useState } from "react";
 import allMolecules from "./molecule_database_DrugDiscovery";
 import Header from "./Header";
+import UpdatePrompt from "./UpdatePrompt/UpdatePrompt";
+import { use, useEffect } from "react";
 
-const Maker = ({ socket }) => {
+const MakerOld = ({ socket }) => {
+  const [showUpdatePrompt, setShowUpdatePrompt] = useState(false);
+
   //The basic molecule outline
   const purple = "src/assets/purple.png";
   const green = "src/assets/green.png";
   const blue = "src/assets/blue.png";
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowUpdatePrompt(true);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const [selectedImages, setSelectedImages] = useState([
     ["module1", Math.floor(Math.random() * 4)],
@@ -96,12 +107,12 @@ const Maker = ({ socket }) => {
           selectedImages={selectedImages}
         />
         <MainContent selectedImages={selectedImages} />
-        <button style={{ padding: "1rem" }} onClick={handleSubmit}>
-          SUBMIT
-        </button>
+        <button style={{ padding: "1rem" }}>SUBMIT</button>
+
+        {showUpdatePrompt && <UpdatePrompt />}
       </div>
     </section>
   );
 };
 
-export default Maker;
+export default MakerOld;
