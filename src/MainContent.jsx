@@ -2,6 +2,9 @@ import PropTypes from "prop-types";
 import MoleculeDisplay from "./MoleculeDisplay/MoleculeDisplay_DrugDiscovery";
 
 const MainContent = ({ selectedImages }) => {
+  for (let i = 0; i < 5; i++) {
+    console.log(Math.floor(Math.random() * 4) + 1);
+  }
   return (
     // shows the molecule the user has currently built.
     <div
@@ -15,7 +18,11 @@ const MainContent = ({ selectedImages }) => {
         alignItems: "center",
         justifyContent: "center",
         marginLeft: "5%",
-        marginRight: "5%",
+        marginRight: "0%",
+        paddingTop: "6%",
+        paddingBottom: "6%",
+        paddingLeft: "5%",
+        paddingRight: "10%",
       }}
     >
       {/* {selectedImages.map(([module, index]) => (

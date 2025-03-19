@@ -6,6 +6,11 @@ import "./MoleculeDisplay_DD_style.css";
 const MoleculeDisplay = ({ module, image, classParent }) => {
   //displays the molecule image and its name
   const moleculeEntry = MoleculeDatabase[module][image];
+  // if (!moleculeEntry) {
+  //   console.log("This molecule entry is undefined or null:", moleculeEntry);
+  // } else if (!moleculeEntry.name) {
+  //   console.log("This entry has no name:", moleculeEntry);
+  // }
   const name = moleculeEntry.name;
 
   return (

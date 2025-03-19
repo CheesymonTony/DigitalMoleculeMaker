@@ -26,7 +26,14 @@ io.on('connection', (socket) => {
     console.log("imagesSelected, emitting....")
     io.emit('updateImages', selectedImages);
   });
+
+  socket.on('sliderUpdate', (sliderData) => {
+    console.log("Received sliderUpdate:", sliderData);
+    io.emit('sliderUpdate', sliderData); // Broadcast to all clients
+  });
 });
+
+
 
 const PORT = process.env.PORT || 4000; // Use Render's provided PORT
 

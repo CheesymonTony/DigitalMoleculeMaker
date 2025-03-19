@@ -8,27 +8,47 @@ import { getMoleculeProperties, getSuggestedMolecule } from "../Utils";
 const Analysis = ({ socket }) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [optimalZones, setOptimalZones] = useState({
+    potency: { min: 6.8, max: 8.5 },
+    toxicity: { min: 2.1, max: 3.6 },
+    synthesizability: { min: 8.2, max: 10 },
+  });
 
   useEffect(() => {
-    socket.on(
-      "updateImages",
-      (updatedImages) => {
-        setLoading(true);
-        setTimeout(() => setLoading(false), 2000); //add loading screen for 2 seconds
-        setSelectedImages(updatedImages);
-      },
-      [selectedImages]
-    ); // Listen for changes in selectedImages
-
-    return () => {
-      // Cleanup function (e.g., removing event listeners)
-      socket.off("updateImages");
+    // Handle "updateImages" event
+    const handleUpdateImages = (updatedImages) => {
+      setLoading(true);
+      setTimeout(() => setLoading(false), 2000); // Add loading screen for 2 seconds
+      setSelectedImages(updatedImages);
     };
-  }, [socket]); // Empty dependency array means this effect runs once when the component mounts
+
+    // Handle "sliderUpdate" event
+    const handleSliderUpdate = (data) => {
+      // Update the corresponding property in optimalZones
+      setOptimalZones((prevZones) => ({
+        ...prevZones,
+        [data.property.toLowerCase()]: {
+          min: data.value[0],
+          max: data.value[1],
+        },
+      }));
+    };
+
+    // Attach socket listeners
+    socket.on("updateImages", handleUpdateImages);
+    socket.on("sliderUpdate", handleSliderUpdate);
+
+    // Cleanup function to remove listeners when component unmounts
+    return () => {
+      socket.off("updateImages", handleUpdateImages);
+      socket.off("sliderUpdate", handleSliderUpdate);
+    };
+  }, [socket]); // Runs once when component mounts
 
   //if a valid molecule is passed in
   if (selectedImages.length == 3) {
-    if (loading) {
+    // if (loading) {
+    if (false) {
       //show loading screen while loading
       return (
         <>
@@ -46,6 +66,7 @@ const Analysis = ({ socket }) => {
             <Header />
             <AnalysisBlock
               selectedImages={selectedImages}
+              optimalZones={optimalZones}
               data={data}
               suggested={suggested}
               optimized={true}
@@ -60,6 +81,7 @@ const Analysis = ({ socket }) => {
             <Header />
             <AnalysisBlock
               selectedImages={selectedImages}
+              optimalZones={optimalZones}
               data={data}
               suggested={suggested}
               optimized={false}

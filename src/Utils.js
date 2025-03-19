@@ -1,33 +1,43 @@
 import allMolecules from "./molecule_database_DrugDiscovery";
 
 export const getMoleculeProperties = (selectedImages) => {
-  console.log("Selected Images:", selectedImages);
+  console.log("What are my selected images?:", selectedImages);
 
-  //get molecule information from the molecule list
-  const molecules = selectedImages.map((image, i) => {
-    return allMolecules[image[0]][image[1]];
+  // Define the path influence for each module
+  const paths = {
+    module1: { potency: 2, toxicity: 4, synthesizability: 2 },
+    module2: { potency: 4, toxicity: 2, synthesizability: 2 },
+    module3: { potency: 2, toxicity: 2, synthesizability: 4 },
+  };
+
+  // Get molecule entries from the database
+  const molecules = selectedImages.map(([moduleKey, moleculeIndex]) => ({
+    ...allMolecules[moduleKey][moleculeIndex],
+    module: moduleKey, // Store module type
+  }));
+
+  // Compute the adjusted sums using the networked influence
+  let potencySum = 0, toxicitySum = 0, synthSum = 0;
+  let totalPotencyPaths = 0, totalToxicityPaths = 0, totalSynthPaths = 0;
+
+  molecules.forEach((mol) => {
+    const { module, potency, toxicity, synthesizability } = mol;
+
+    potencySum += potency * paths[module].potency;
+    toxicitySum += toxicity * paths[module].toxicity;
+    synthSum += synthesizability * paths[module].synthesizability;
+
+    totalPotencyPaths += paths[module].potency;
+    totalToxicityPaths += paths[module].toxicity;
+    totalSynthPaths += paths[module].synthesizability;
   });
 
-  const numMolecules = molecules.length;
-  console.log("Molecules:", molecules);
-  const weightSum = molecules.reduce((acc, currImage) => {
-    return acc + currImage.weight;
-  }, 0);
-  const potencySum = molecules.reduce((acc, currImage) => {
-    return acc + currImage.potency;
-  }, 0);
-  const toxicitySum = molecules.reduce((acc, currImage) => {
-    return acc + currImage.toxicity;
-  }, 0);
-  const synthSum = molecules.reduce((acc, currImage) => {
-    return acc + currImage.synthesizability;
-  }, 0);
-
+  // Normalize by total paths to ensure results stay in expected ranges
   return [
-    weightSum / numMolecules / 100,
-    potencySum / numMolecules,
-    toxicitySum / numMolecules,
-    synthSum / numMolecules,
+    molecules.reduce((acc, mol) => acc + mol.weight, 0) / molecules.length / 100, // Weight
+    potencySum / totalPotencyPaths, // Adjusted potency
+    toxicitySum / totalToxicityPaths, // Adjusted toxicity
+    synthSum / totalSynthPaths, // Adjusted synthesizability
   ];
 };
 
@@ -48,6 +58,7 @@ export const getSuggestedMolecule = (selectedMolecules) => {
   var replace = -1;
 
   var replaceMolecule = null;
+  // set up the 2 trimers that will then be used to suggest new molecules
   var trimer1 = [
     selectedMolecules[0],
     selectedMolecules[1],
@@ -59,17 +70,19 @@ export const getSuggestedMolecule = (selectedMolecules) => {
     selectedMolecules[2],
   ];
 
-  console.log("trimer1:", trimer1);
-  console.log("trimer2:", trimer2);
 
-  // finds the first molecule that isn't fully optimized
+  //now go through the 3 molecules and find the first one that isn't fully optimized
+  //when you find the first one, store it in replaceMolecule and set the replace variable to the index of the block type that will be replaced
   if (molecule1.rank !== 5) {
+    console.log('molecule1 not equal to rank 5:');
     replaceMolecule = molecule1;
     replace = 0;
   } else if (molecule2.rank !== 5) {
+    console.log('molecule2 not equal to rank 5:');
     replaceMolecule = molecule2;
     replace = 1;
   } else if (molecule3.rank !== 5) {
+    console.log('molecule3 not equal to rank 5:');
     replaceMolecule = molecule3;
     replace = 2;
   }
@@ -77,17 +90,21 @@ export const getSuggestedMolecule = (selectedMolecules) => {
     //if the molecule is fully optimized, return true to signal the winning screen
     return true;
   }
+  //now setup the indexes of the molecules that will be used to replace the molecule that is not fully optimized
   var idx2 = -1;
   var idx3 = -1;
 
   if (replace !== null) {
-    const idx = replace * 4 + replaceMolecule.rank - 1; //get the index of the molecule in the molecule list
+    console.log('at this point the molecule that is not fully optimized is:', replaceMolecule);
+    const idx = replaceMolecule.rank - 1; //get the index of the molecule in the molecule list
+    console.log('idx:', idx);
     if (replaceMolecule.rank == 1) {
       //edge case: if molecule is rank 1, then get rank 2 and rank 3 of the same color molecule
       idx2 = idx + 1;
       idx3 = idx + 2;
     } else {
       //if the molecule is not rank 1, get the rank-1 and rank+1 molecule
+      console.log('replaceMolecule.rank:', replaceMolecule.rank);
       idx2 = idx + 1;
       idx3 = idx - 1;
     }
@@ -95,8 +112,10 @@ export const getSuggestedMolecule = (selectedMolecules) => {
     trimer2[replace] = [Object.keys(allMolecules)[replace], idx3];
     const rand = Math.floor(Math.random() * 2); // randomize which order the molecules appear in
     if (rand == 0) {
+      // console.log('trimer1:', trimer1);
       return [trimer1, trimer2];
     }
+    // console.log('trimer2:', trimer2);
     return [trimer2, trimer1];
   }
 };

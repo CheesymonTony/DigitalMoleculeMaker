@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import MoleculeDisplay from "../MoleculeDisplay/MoleculeDisplay_DrugDiscovery";
-import Chart from "../Chart_DrugDiscovery";
+import Chart from "../Chart/Chart_DrugDiscovery";
 import "./Analysis_style.css";
 
-const AnalysisBlock = ({ selectedImages, data, suggested, optimized }) => {
+const AnalysisBlock = ({
+  selectedImages,
+  data,
+  suggested,
+  optimalZones,
+  optimized,
+}) => {
   return (
     <>
       <div className="analysis-container">
@@ -22,6 +28,7 @@ const AnalysisBlock = ({ selectedImages, data, suggested, optimized }) => {
           </span>
           <Chart
             weight={data[0]}
+            optimalZones={optimalZones}
             potency={data[1]}
             toxicity={data[2]}
             synthesizability={data[3]}

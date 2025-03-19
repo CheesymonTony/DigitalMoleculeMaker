@@ -13,6 +13,9 @@ import { useEffect } from "react";
 import MoleculeTest from "./MoleculeDisplay/moleculeTest";
 import UpdatePrompt from "./UpdatePrompt/UpdatePrompt";
 import RebootScreen from "./RebootScreen/Reboot";
+import Chart from "./Chart/Chart_DrugDiscovery";
+import ChartBar from "./Chart/ChartBar";
+import RangeSlider from "./RangeSlider/RangeSlider";
 
 function AppRouter({ socket }) {
   // const navigate = useNavigate();
@@ -33,6 +36,8 @@ function AppRouter({ socket }) {
       <Route path="/dev2" element={<App socket={socket} />} />
       <Route path="/update" element={<UpdatePrompt socket={socket} />} />
       <Route path="/reboot" element={<RebootScreen socket={socket} />} />
+      <Route path="/chart" element={<ChartBar socket={socket} />} />
+      <Route path="/slider" element={<RangeSlider socket={socket} />} />
     </Routes>
   );
 }

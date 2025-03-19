@@ -8,6 +8,9 @@ import UpdatePrompt from "./UpdatePrompt/UpdatePrompt";
 import RebootScreen from "./RebootScreen/Reboot";
 import { use, useEffect } from "react";
 import "typeface-roboto";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import OptimalSliders from "./OptimalSliders/OptimalSliders";
 
 const MakerUpdated = ({ socket }) => {
   const [showRebootScreen, setShowRebootScreen] = useState(false);
@@ -25,28 +28,35 @@ const MakerUpdated = ({ socket }) => {
   const blue = "src/assets/blue.png";
 
   const [selectedImages, setSelectedImages] = useState([
-    ["module1", Math.floor(Math.random() * 4)],
-    ["module2", Math.floor(Math.random() * 4)],
-    ["module3", Math.floor(Math.random() * 4)],
+    // ["module1", Math.floor(Math.random() * 4)],
+    // ["module2", Math.floor(Math.random() * 4)],
+    // ["module3", Math.floor(Math.random() * 4)],
+    ["module1", 1],
+    ["module2", 1],
+    ["module3", 2],
   ]);
   //the list of all molecules available
   const images = [
-    "/DrugDiscovery_Images/S1.png",
-    "/DrugDiscovery_Images/S2.png",
-    "/DrugDiscovery_Images/S4.png",
-    "/DrugDiscovery_Images/S3.png",
-    "/DrugDiscovery_Images/S5.png",
-    "/DrugDiscovery_Images/M3.png",
-    "/DrugDiscovery_Images/M5.png",
-    "/DrugDiscovery_Images/M4.png",
-    "/DrugDiscovery_Images/M2.png",
-    "/DrugDiscovery_Images/M1.png",
-    "/DrugDiscovery_Images/E4.png",
-    "/DrugDiscovery_Images/E5.png",
-    "/DrugDiscovery_Images/E3.png",
-    "/DrugDiscovery_Images/E2.png",
-    "/DrugDiscovery_Images/E1.png",
+    [1, 2, 0, 4, 3],
+    [1, 0, 4, 2, 3],
+    [2, 0, 1, 4, 3],
   ];
+  //   "/DrugDiscovery_Images/S2.png",
+  //   "/DrugDiscovery_Images/S3.png",
+  //   "/DrugDiscovery_Images/S5.png",
+  //   "/DrugDiscovery_Images/S1.png",
+  //   "/DrugDiscovery_Images/S4.png",
+  //   "/DrugDiscovery_Images/M2.png",
+  //   "/DrugDiscovery_Images/M1.png",
+  //   "/DrugDiscovery_Images/M5.png",
+  //   "/DrugDiscovery_Images/M3.png",
+  //   "/DrugDiscovery_Images/M4.png",
+  //   "/DrugDiscovery_Images/E3.png",
+  //   "/DrugDiscovery_Images/E2.png",
+  //   "/DrugDiscovery_Images/E5.png",
+  //   "/DrugDiscovery_Images/E1.png",
+  //   "/DrugDiscovery_Images/E4.png",
+  // ];
 
   //Handles adding molecules selected from the sidebar to the currently built molecule.
   const handleImageSelect = (moduleKey, molecule) => {
@@ -86,6 +96,7 @@ const MakerUpdated = ({ socket }) => {
       selectedImages[2] !== "src/assets/blue.png"
     ) {
       socket.emit("imagesSelected", selectedImages);
+      console.log("socket: ", socket);
     } else {
       alert("Invalid molecule submitted!");
     }
@@ -107,13 +118,47 @@ const MakerUpdated = ({ socket }) => {
       >
         <SidebarUpdate
           imageDatabase={allMolecules}
+          layout={images}
           handleImageSelect={handleImageSelect}
           selectedImages={selectedImages}
         />
-        <MainContent selectedImages={selectedImages} />
-        <button style={{ padding: "1rem" }} onClick={handleSubmit}>
-          SUBMIT
-        </button>
+        <div className="main-content-section">
+          <div
+            className="selection-container"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <MainContent selectedImages={selectedImages} />
+            <button onClick={handleSubmit}>
+              Submit
+              <span className="arrow">
+                <FontAwesomeIcon icon={faChevronRight} />
+              </span>
+            </button>
+          </div>
+          <div
+            className="slider-container"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              backgroundColor: "white",
+              width: "70%",
+              borderRadius: "20px",
+              border: "1px solid #868686",
+              alignItems: "center",
+              justifyContent: "center",
+              marginLeft: "5%",
+              marginTop: "10px",
+              height: "10rem",
+            }}
+          >
+            <OptimalSliders socket={socket} />
+          </div>
+        </div>
       </div>
     </section>
   );
