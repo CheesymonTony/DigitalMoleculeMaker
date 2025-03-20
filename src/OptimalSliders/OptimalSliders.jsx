@@ -34,11 +34,7 @@ const OptimalSliders = ({ socket }) => {
         >
           Potency
         </h4>
-        <RangeSlider
-          socket={socket}
-          propertyName={"Potency"}
-          zone={[6.8, 8.5]}
-        />
+        <RangeSlider socket={socket} propertyName={"Potency"} zone={[0, 10]} />
       </div>
       <div>
         <h4
@@ -52,11 +48,7 @@ const OptimalSliders = ({ socket }) => {
         >
           Toxicity
         </h4>
-        <RangeSlider
-          socket={socket}
-          propertyName={"Toxicity"}
-          zone={[2.1, 3.6]}
-        />
+        <RangeSlider socket={socket} propertyName={"Toxicity"} zone={[0, 10]} />
       </div>
       <div>
         <h4
@@ -73,7 +65,7 @@ const OptimalSliders = ({ socket }) => {
         <RangeSlider
           socket={socket}
           propertyName={"Synthesizability"}
-          zone={[8.2, 10]}
+          zone={[0, 10]}
         />
       </div>
     </div>

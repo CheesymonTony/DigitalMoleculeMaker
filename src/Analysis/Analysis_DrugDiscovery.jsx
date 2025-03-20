@@ -9,9 +9,9 @@ const Analysis = ({ socket }) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [loading, setLoading] = useState(false);
   const [optimalZones, setOptimalZones] = useState({
-    potency: { min: 6.8, max: 8.5 },
-    toxicity: { min: 2.1, max: 3.6 },
-    synthesizability: { min: 8.2, max: 10 },
+    potency: { min: 0, max: 10 },
+    toxicity: { min: 0, max: 10 },
+    synthesizability: { min: 0, max: 10 },
   });
 
   useEffect(() => {
