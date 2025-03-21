@@ -1,4 +1,3 @@
-import MoleculeDisplayV2 from "../MoleculeDisplay/MoleculeDisplayV2";
 import DraggableBlock from "../DraggableBlock/draggableBlock";
 import { useState, useRef } from "react";
 import "./DragTest.css";

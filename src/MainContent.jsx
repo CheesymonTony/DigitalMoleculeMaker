@@ -14,15 +14,15 @@ const MainContent = ({ selectedImages }) => {
         backgroundColor: "white",
         borderRadius: "25px",
         width: "70%",
-        height: "15rem",
+        // height: "15rem",
         alignItems: "center",
         justifyContent: "center",
         marginLeft: "5%",
         marginRight: "0%",
-        paddingTop: "6%",
-        paddingBottom: "6%",
-        paddingLeft: "5%",
-        paddingRight: "10%",
+        paddingTop: "30px",
+        paddingBottom: "20px",
+        paddingLeft: "30px",
+        paddingRight: "100px",
       }}
     >
       {/* {selectedImages.map(([module, index]) => (

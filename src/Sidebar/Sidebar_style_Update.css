@@ -34,6 +34,14 @@
     width:47%;
 }
 
-.selected .molecule-display-outer{
+.selected .module1-display-outer{
     border-color: #6C88CF;
     box-shadow: 0px 0px 0px 3px #6C88CF80; }
+
+.selected .module2-display-outer{
+    border-color: #6dd689;
+    box-shadow: 0px 0px 0px 3px #6dd68980; }
+
+.selected .module3-display-outer{
+    border-color: #319CC6;
+    box-shadow: 0px 0px 0px 3px #319CC680; }

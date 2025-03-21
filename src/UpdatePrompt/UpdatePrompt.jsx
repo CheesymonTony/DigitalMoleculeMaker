@@ -9,6 +9,7 @@ function UpdatePrompt() {
   const timeoutsRef = useRef([]);
   const schedulingStarted = useRef(false);
   const schedulePoint = useRef(0);
+  const [reallyCount, setReallyCount] = useState(0);
 
   const copyToUpdates = [
     "Copying kernel32.dll to C:\\Lab217\\System\\Updates\\",
@@ -417,7 +418,10 @@ function UpdatePrompt() {
   }, [phase, schedule]);
 
   const handleUpdate = () => setPhase("updating");
-  const handleLater = () => setPhase("declined");
+  const handleLater = () => {
+    setPhase("declined");
+    setReallyCount((prevCount) => prevCount + 1);
+  };
   const handleReboot = () => {
     // Insert reboot functionality here.
     console.log("Rebooting...");
@@ -434,11 +438,13 @@ function UpdatePrompt() {
           </p>
           {phase === "declined" && (
             <p style={{ color: "red" }}>
-              It's highly encouraged to update to the current software.
+              {`I would ${"really ".repeat(
+                reallyCount
+              )} encourage you to update to the current software.`}
             </p>
           )}
           <div className="update-button-container">
-            <button onClick={handleUpdate} style={{ marginRight: "10px" }}>
+            <button onClick={handleUpdate} style={{ marginRight: "100px" }}>
               Yes, update
             </button>
             <button onClick={handleLater}>Later</button>

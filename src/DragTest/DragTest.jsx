@@ -1,4 +1,4 @@
-import MoleculeDisplayV2 from "../MoleculeDisplay/MoleculeDisplayV2";
+import Molecule from "../MoleculeDisplay/Molecule_SideBar_Block";
 import Dropzone from "../DropZone/DropZone";
 import { useState, useRef } from "react";
 import "./DragTest.css";
@@ -15,7 +15,7 @@ const DragTestPage = () => {
       <div className="drag-zone-container">
         {Object.entries(dragZones).map(([key, zone], index) => zone)}
       </div>
-      <MoleculeDisplayV2 dragZones={dragZones} />
+      <Molecule dragZones={dragZones} />
     </div>
   );
 };

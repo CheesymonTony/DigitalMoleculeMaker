@@ -143,7 +143,7 @@ const MakerUpdated = ({ socket }) => {
             className="slider-container"
             style={{
               display: "flex",
-              flexDirection: "row",
+              flexDirection: "column",
               alignItems: "center",
               backgroundColor: "white",
               width: "70%",
@@ -156,6 +156,7 @@ const MakerUpdated = ({ socket }) => {
               height: "10rem",
             }}
           >
+            <h3>Optimization Zones</h3>
             <OptimalSliders socket={socket} />
           </div>
         </div>

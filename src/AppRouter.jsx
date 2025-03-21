@@ -4,7 +4,7 @@ import MakerOld from "./Maker_DrugDiscovery_old";
 import MakerUpdated from "./Maker_DrugDiscovery_Updated";
 import Analysis from "./Analysis/Analysis_DrugDiscovery";
 import MoleculePage from "./SmilePage";
-import MoleculeDisplayV2 from "./MoleculeDisplay/MoleculeDisplayV2";
+import MoleculeSideBarBlock from "./MoleculeDisplay/Molecule_SideBar_Block";
 import DragTestPage from "./DragTest/DragTest";
 import DragTestPageV2 from "./DragTest/DragTestV2";
 import App from "./Examples/example";

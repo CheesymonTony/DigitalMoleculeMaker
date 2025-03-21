@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import MoleculeDisplayV2 from "../MoleculeDisplay/MoleculeDisplayV2";
+import MoleculeSideBarBlock from "../MoleculeDisplay/Molecule_SideBar_Block";
 import "./Sidebar_style_Update.css";
 
 const SidebarUpdate = ({
@@ -25,7 +25,7 @@ const SidebarUpdate = ({
                 key={`${moduleKey}-${moleculeIndex}`}
                 onClick={() => handleImageSelect(moduleKey, moleculeIndex)}
               >
-                <MoleculeDisplayV2
+                <MoleculeSideBarBlock
                   module={moduleKey}
                   image={moleculeIndex}
                   classParent={"sidebar"}
