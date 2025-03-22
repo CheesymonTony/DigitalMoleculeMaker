@@ -13,7 +13,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import OptimalSliders from "./OptimalSliders/OptimalSliders";
 
 const MakerUpdated = ({ socket }) => {
-  const [showRebootScreen, setShowRebootScreen] = useState(false);
+  const [showRebootScreen, setShowRebootScreen] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
