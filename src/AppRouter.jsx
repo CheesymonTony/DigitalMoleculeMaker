@@ -27,8 +27,8 @@ function AppRouter({ socket }) {
 
   return (
     <Routes>
-      <Route path="/" element={<PasswordLock />} />
-      <Route path="/maker" element={<MakerOld socket={socket} />} />
+      {/* <Route path="/" element={<PasswordLock />} /> */}
+      <Route path="/" element={<MakerOld socket={socket} />} />
       <Route path="/maker_new" element={<MakerUpdated socket={socket} />} />
       <Route path="/analysis" element={<Analysis socket={socket} />} />
       <Route path="/molecule" element={<MoleculeTest socket={socket} />} />
