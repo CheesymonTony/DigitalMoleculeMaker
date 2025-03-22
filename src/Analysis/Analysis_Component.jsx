@@ -12,6 +12,9 @@ const AnalysisBlock = ({
 }) => {
   return (
     <>
+    <h2 className="suggested-molecule-information">
+                The molecule isn't optimized yet, keep submitting new molecules!
+              </h2>
       <div className="analysis-container">
         {/* Display the submitted molecule and its stats */}
         <div className="selected-molecule-container">
@@ -35,14 +38,16 @@ const AnalysisBlock = ({
           />
         </div>
         {/* Display the suggested molecules if the best molecule has not been found yet. */}
-        <span>
+        <div className="suggested-molecule-container">
           <h2 className="suggested-molecule-header">Suggested Molecules:</h2>
           {!optimized ? (
             <>
               {suggested.map((suggestedTrimer, i) => (
                 <div className={`suggested-set-${i + 1}`} key={i}>
                   <span className="suggested-molecules">
-                    {suggestedTrimer.map((image, j) => (
+                    <h4 className="suggested-molecules-subhead">Option {i+1}</h4>
+                    <div className="suggested-molecule-subcontainer">
+                      {suggestedTrimer.map((image, j) => (
                       <MoleculeDisplay
                         key={j}
                         module={image[0]}
@@ -50,14 +55,11 @@ const AnalysisBlock = ({
                         classParent={`suggestion-${i + 1}-${j + 1}`}
                       ></MoleculeDisplay>
                     ))}
+                    </div>
                   </span>
                   <br />
                 </div>
               ))}
-
-              <h2 className="suggested-molecule-information">
-                The molecule isn't optimized yet, keep submitting new molecules!
-              </h2>
             </>
           ) : (
             <h1>
@@ -65,7 +67,7 @@ const AnalysisBlock = ({
               using the physical molecule maker.
             </h1>
           )}
-        </span>
+        </div>
       </div>
     </>
   );

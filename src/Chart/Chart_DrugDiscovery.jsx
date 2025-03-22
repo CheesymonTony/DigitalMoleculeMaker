@@ -11,11 +11,11 @@ const Chart = ({ potency, toxicity, synthesizability, optimalZones }) => {
         display: "flex",
         flexDirection: "column",
         border: "1px solid black",
-        padding: "10px",
+        padding: "20px",
         borderRadius: "10px",
       }}
     >
-      <h2 style={{ fontVariant: "small-caps" }}>Molecule Properties</h2>
+      <h2 style={{ fontFamily: "Roboto, sans-serif" }}>Optimization Zones</h2>
 
       <OptimalBar
         propertyName="Potency"

@@ -100,8 +100,8 @@ const OptimalBar = ({ value, propertyName, optimalZones }) => {
         width: "100%",
       }}
     >
-      <h4 style={{ width: "200px" }}>{propertyName}</h4>
-      <div style={{ width: "600px", margin: "20px" }}>
+      <h4 style={{ width: "200px", marginTop: "10px" }}>{propertyName}</h4>
+      <div style={{ width: "600px", margin: "10px" }}>
         <OptimalBarSlider
           value={[min, max]}
           min={0}
