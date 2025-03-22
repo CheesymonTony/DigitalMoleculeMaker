@@ -1,6 +1,6 @@
 import { Routes, Route, useNavigate } from "react-router-dom";
 import PasswordLock from "./PasswordLock";
-import MakerOld from "./Maker_DrugDiscovery_old";
+import MakerOld from "./Maker_DrugDiscovery_Old";
 import MakerUpdated from "./Maker_DrugDiscovery_Updated";
 import Analysis from "./Analysis/Analysis_DrugDiscovery";
 import MoleculePage from "./SmilePage";

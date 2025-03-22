@@ -32,7 +32,7 @@ app.whenReady().then(() => {
   const { screen } = require('electron');
 
   mainWindow = createWindow('http://localhost:5173/', 0);
-  databaseWindow = createWindow('http://localhost:5173/database', 1);
+  databaseWindow = createWindow('http://localhost:5173/analysis', 1);
 
 });
 
