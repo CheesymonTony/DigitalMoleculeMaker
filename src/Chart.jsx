@@ -4,7 +4,7 @@ const Chart = ({ weight, light_absorption, lifespan, bandgap }) => {
   return (
     <>
       <div className="chart">
-        <h2 style={{ fontVariant: "small-caps" }}>Molecule Properties</h2>
+        <h2 style={{ fontVariant: "small-caps" }}>Optimization Zones</h2>
         <table>
           <tbody>
             <tr>

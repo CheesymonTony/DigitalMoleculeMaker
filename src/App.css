@@ -156,15 +156,16 @@ input {
 }
 
 .chart {
-  margin-top: 5%;
-  margin-left: 2rem;
-  width: 100%;
-  padding-bottom: 5rem;
+  margin-top: 1%;
+  width: calc(100% - 4rem);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px 20px 10px 20px !important;
 }
 
 .chart h2 {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .chart .bar-container {
